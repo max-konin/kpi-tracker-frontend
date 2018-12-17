@@ -1,0 +1,22 @@
+.row
+  .col-sm
+    table.table
+      thead
+        tr
+          td Activity
+          td User
+          td KPI score
+          td Activity Goal
+          td Completed
+      tbody
+        each model as |task|
+          tr data-test-task-row=true
+            td = task.category.name
+            td = task.user.email
+            td = task.kpiPoints
+            td
+              = activity-goal task=task
+            td
+              = moment-calendar task.taskFinishedAt
+  .col-sm
+    = outlet
