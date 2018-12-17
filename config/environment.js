@@ -31,9 +31,16 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.serverURL = "http://localhost:3000";
     ENV.webURL = "http://localhost:4200";
     ENV.webSocketURL = "ws://localhost:3000/cable";
+
+    // With Mirage
+    ENV.serverURL = 'http://localhost:4200';
+    ENV['ember-cli-mirage'] = { enabled: true };
+
+    // w/o mirage
+    // ENV.serverURL = 'http://localhost:3000';
+    // ENV['ember-cli-mirage'] = { enabled: false };
   }
 
   if (environment === "test") {
