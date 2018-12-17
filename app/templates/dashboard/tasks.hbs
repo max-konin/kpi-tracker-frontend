@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm">
+    <table class="table">
+      <thead>
+        <tr>
+          <td>Activity</td>
+          <td>User</td>
+          <td>KPI score</td>
+          <td>Activity Goal</td>
+          <td>Completed</td>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |task|}}
+          <tr data-test-task-row>
+            <td>{{task.category.name}}</td>
+            <td>{{task.user.email}}</td>
+            <td>{{task.kpiPoints}}</td>
+            <td><ActivityGoal @task={{task}}/></td>
+            <td>{{moment-calendar task.taskFinishedAt}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm">
+    {{outlet}}
+  </div>
+</div>

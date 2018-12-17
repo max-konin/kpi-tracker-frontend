@@ -1,0 +1,36 @@
+{{#bs-form model=task onSubmit=(perform save) novalidate=true  as |form|}}
+  <div class="form-row">
+    {{form.element
+      controlType="power-select"
+      property="category"
+      label="Activity"
+      options=categories.content
+      placeholder="Select..."
+      showValidationOn="change"
+      data-test-select="category"
+      optionLabelPath="name"
+      class="col-sm"
+    }}
+    {{#form.element label="Datetime completed" property="taskFinishedAt" class="col-sm" as |el|}}
+      <div>
+        <PikadayInput @onSelection={{action (mut el.value)}} id={{el.id}}/>
+      </div>
+    {{/form.element}}
+  </div>
+  <div class="form-row">
+    {{form.element
+      controlType="text"
+      property="kpiPoints"
+      label="How many emails were sent?"
+      class="col-sm"
+    }}
+  </div>
+    <div class="form-row">
+    {{form.element
+      controlType="textarea"
+      property="notes"
+      label="Explain what did you do?"
+      class="col-sm"
+    }}
+  </div>
+{{/bs-form}}

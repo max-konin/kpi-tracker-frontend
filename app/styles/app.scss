@@ -9,4 +9,7 @@ body, .h-screen {
   border-color: #dc3545;
 }
 
+
+@import "ember-power-select/themes/bootstrap";
+
 @import "ember-power-select";
