@@ -11,9 +11,7 @@ Router.map(function() {
   this.route('signup');
   this.route('dashboard', { path: '' }, function() {
     this.route('tasks', function () {
-      this.route('new', function () {
-
-      });
+      this.route('new');
       this.route('task', { path: ':task_id' }, function () {
         this.route('edit');
       });
