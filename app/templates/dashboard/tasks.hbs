@@ -1,5 +1,16 @@
 <div class="row">
   <div class="col-sm">
+    <div data-test-filter>
+      <PowerSelect
+        @searchEnabled={{false}}
+        @options={{availableDaysFilter}}
+        @onchange={{action (mut lastDays)}}
+        @selected={{lastDays}}
+        as |item|
+      >
+        Last {{item}} days
+      </PowerSelect>
+    </div>
     <table class="table">
       <thead>
         <tr>
