@@ -4,6 +4,7 @@ import { setupApplicationTest } from 'ember-mocha';
 import { visit, findAll, click, currentURL } from '@ember/test-helpers';
 import { authenticateSession } from 'ember-simple-auth/test-support';
 import setupMirage from 'ember-cli-mirage/test-support/setup-mirage';
+import { selectChoose } from 'ember-power-select/test-support/helpers';
 
 describe('Acceptence | Tasks Page', function() {
   const hooks = setupApplicationTest();
@@ -24,6 +25,13 @@ describe('Acceptence | Tasks Page', function() {
       it('redirects to /tasks/new page', async function () {
         await click('[data-test-add-task]');
         expect(currentURL()).to.eq('/tasks/new');
+      });
+    });
+
+    describe('change filter', function () {
+      it('changes query param lastDays', async function () {
+        await selectChoose('[data-test-filter]', '.ember-power-select-option', 1);
+        expect(currentURL()).to.eq('/tasks?lastDays=30');
       });
     });
   });

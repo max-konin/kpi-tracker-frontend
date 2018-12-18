@@ -10,7 +10,7 @@ const Validations = buildValidations({
     validator('presence', true),
     validator('number', {
       gt: 0,
-      lte: readOnly('category.kpiQuantityGoal'),
+      lte: readOnly('model.category.kpiQuantityGoal'),
       allowString: true
     })
   ]
@@ -20,8 +20,6 @@ export default DS.Model.extend(Validations, {
   kpiPoints:      DS.attr('number'),
   notes:          DS.attr('string'),
   taskFinishedAt: DS.attr('date'),
-
-  maxPoints: readOnly('category.kpiQuantityGoal'),
 
   user:     DS.belongsTo({ async: false }),
   category: DS.belongsTo({ async: false })
