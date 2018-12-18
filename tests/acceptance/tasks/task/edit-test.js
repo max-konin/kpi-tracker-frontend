@@ -12,6 +12,7 @@ describe('Acceptence | Tasks | Task | Edit Page', function() {
 
   describe('visit /tasks/:id/edit', function () {
     beforeEach(async function () {
+      server.create('user', { id: 'me', email: 'me@example.com' });
       server.createList('category', 2);
       const task = server.create('task');
       await authenticateSession({email: 'user@exmple.com'});

@@ -6,7 +6,7 @@ export default function() {
   this.namespace = '/api/v1';
 
   this.get('/users/me', function (schema) {
-    return schema.create('user', { email: 'me@example.com' });
+    return schema.users.find('me');
   })
 
   this.get('/categories');

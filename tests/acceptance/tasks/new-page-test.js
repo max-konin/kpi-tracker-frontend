@@ -12,6 +12,7 @@ describe('Acceptence | Tasks | New Page', function() {
 
   describe('visit /tasks/new', function () {
     beforeEach(async function () {
+      server.create('user', { id: 'me', email: 'me@example.com' });
       server.createList('category', 2);
       await authenticateSession({email: 'user@exmple.com'});
       await visit('/tasks/new');
