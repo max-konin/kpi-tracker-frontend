@@ -8,5 +8,5 @@ export default Component.extend({
 
   kpiPoints:    readOnly('task.kpiPoints'),
   maxKpiPoints: readOnly('task.category.kpiQuantityGoal'),
-  progress:     math.min(divide(product('kpiPoints', raw(100)), 'maxKpiPoints'), 100)
+  progress:     math.round(math.min(divide(product('kpiPoints', raw(100)), 'maxKpiPoints'), 100))
 });

@@ -21,7 +21,7 @@ describe('Integration | Components | ActivityGoal', function() {
         expect(this.element.querySelector('.progress-bar')).to.have.attribute('style', expectedStyle)
       });
       it('renders a label with percents', function () {
-        expect(this.element.querySelector('.progress-bar')).to.have.text('20%')
+        expect(this.element.querySelector('.progress-bar')).to.have.text('\n  20%\n')
       });
     });
     context('when task has kpiPoints >= category.kpiQuantityGoal', function () {
@@ -37,7 +37,7 @@ describe('Integration | Components | ActivityGoal', function() {
         expect(this.element.querySelector('.progress-bar')).to.have.attribute('style', expectedStyle)
       });
       it('renders a label with percents', function () {
-        expect(this.element.querySelector('.progress-bar')).to.have.text('100%')
+        expect(this.element.querySelector('.progress-bar')).to.have.text('\n  100%\n')
       });
     });
   });

@@ -9,4 +9,10 @@ body, .h-screen {
   border-color: #dc3545;
 }
 
+
+@import "ember-power-select/themes/bootstrap";
+
 @import "ember-power-select";
+
+@import "components/flash.scss";
+@import "components/smart-btn.scss";

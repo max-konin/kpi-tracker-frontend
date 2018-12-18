@@ -1,0 +1,7 @@
+{{#bs-button type="primary" disabled=isDisabled buttonType="submit"}}
+  {{#if loading}}
+    {{fa-icon "circle-o-notch" spin=true}}
+    &nbsp;
+  {{/if}}
+  {{yield}}
+{{/bs-button}}
