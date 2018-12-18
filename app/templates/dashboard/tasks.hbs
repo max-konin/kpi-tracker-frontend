@@ -25,16 +25,28 @@
       <tbody>
         {{#each model as |task|}}
           {{#unless task.isNew}}
-            <tr data-test-task-row>
+            <tr data-test-task-row={{task.id}}>
               <td>{{task.category.name}}</td>
               <td>{{task.user.email}}</td>
               <td>{{task.kpiPoints}}</td>
               <td><ActivityGoal @task={{task}}/></td>
               <td>{{moment-calendar task.taskFinishedAt}}</td>
               <td>
-                {{#link-to "dashboard.tasks.task.edit" task tagName="button" class="btn"}}
-                  {{fa-icon "edit"}}
-                {{/link-to}}
+                {{#if (can "edit task" task)}}
+                  {{#link-to
+                    "dashboard.tasks.task.edit"
+                    task
+                    tagName="button"
+                    class="btn"
+                    data-test-edit=true}}
+                    {{fa-icon "edit"}}
+                  {{/link-to}}
+                {{/if}}
+                {{#if (can "destroy task" task)}}
+                  <button class="btn" data-test-destroy onclick={{perform destroyTask task}}>
+                    {{fa-icon "trash"}}
+                  </button>
+                {{/if}}
               </td>
             </tr>
           {{/unless}}

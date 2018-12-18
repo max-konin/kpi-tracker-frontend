@@ -38,7 +38,7 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
       pages: pages
     };
 
-    payload.meta = meta;
+    if (payload) payload.meta = meta;
 
     return this._super(status, headers, payload, requestData);
   }
