@@ -21,6 +21,8 @@ export default DS.Model.extend(Validations, {
   notes:          DS.attr('string'),
   taskFinishedAt: DS.attr('date'),
 
+  maxPoints: readOnly('category.kpiQuantityGoal'),
+
   user:     DS.belongsTo({ async: false }),
   category: DS.belongsTo({ async: false })
 });

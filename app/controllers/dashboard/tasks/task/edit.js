@@ -14,7 +14,7 @@ export default Controller.extend({
   save: task(function * () {
     try {
       yield this.model.save();
-      this.flashMessages.success('Successfully added!');
+      this.flashMessages.success('Successfully updated!');
       this.router.transitionTo('dashboard.tasks.index');
     } catch (_) {
       this.flashMessages.danger('Something went wrong!');

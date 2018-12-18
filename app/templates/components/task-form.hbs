@@ -13,7 +13,7 @@
     }}
     {{#form.element label="Datetime completed" property="taskFinishedAt" class="col-sm" as |el|}}
       <div data-test-finised-at>
-        <PikadayInput @onSelection={{action (mut el.value)}} id={{el.id}}/>
+        <PikadayInput @value={{el.value}} @onSelection={{action (mut el.value)}} id={{el.id}} class="form-control"/>
       </div>
     {{/form.element}}
   </div>
@@ -36,4 +36,5 @@
     }}
   </div>
   <SmartButton @disabled={{v-get task 'isInvalid'}} @loading={{saveTask.isRunning}}>Submit</SmartButton>
+  <BsButton data-test-cancel-btn @onClick={{action 'onCancel'}}>Cancel</BsButton>
 {{/bs-form}}

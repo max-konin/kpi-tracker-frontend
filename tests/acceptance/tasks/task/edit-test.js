@@ -6,15 +6,16 @@ import { authenticateSession } from 'ember-simple-auth/test-support';
 import setupMirage from 'ember-cli-mirage/test-support/setup-mirage';
 import { selectChoose } from 'ember-power-select/test-support/helpers';
 
-describe('Acceptence | Tasks | New Page', function() {
+describe('Acceptence | Tasks | Task | Edit Page', function() {
   const hooks = setupApplicationTest();
   setupMirage(hooks);
 
-  describe('visit /tasks/new', function () {
+  describe('visit /tasks/:id/edit', function () {
     beforeEach(async function () {
       server.createList('category', 2);
+      const task = server.create('task');
       await authenticateSession({email: 'user@exmple.com'});
-      await visit('/tasks/new');
+      await visit(`tasks/${task.id}/edit`);
     });
 
     it('renders a form', async function () {
@@ -35,9 +36,6 @@ describe('Acceptence | Tasks | New Page', function() {
         await fillIn('[data-test-kpi-points] input', 2);
         await selectChoose('[data-test-select="category"]', '.ember-power-select-option', 1);
         await click('button[type="submit"]');
-      });
-      it('creates a new task on the server', function () {
-        expect(server.db.tasks.length).to.eq(1);
       });
       it('redirects to the index page', function () {
         expect(currentURL()).to.eq('/tasks');

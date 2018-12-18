@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { describe, it, context } from 'mocha';
 import { setupRenderingTest } from 'ember-mocha';
-import { render, find } from '@ember/test-helpers';
+import { render, find, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 describe('Integration | Components | TaskForm', function() {
@@ -35,6 +35,17 @@ describe('Integration | Components | TaskForm', function() {
         await render(hbs`{{task-form task=task}}`);
         expect(find('button[type=submit]')).to.have.attr('disabled');
       });
+    });
+  });
+
+  describe('click on the cancel btn', function () {
+    it('calls onCancel', async function () {
+      let onCancelHandlerHasBeenCalled = false
+      const onCancelHandler = () => onCancelHandlerHasBeenCalled = true
+      this.set('onCancel', onCancelHandler);
+      await render(hbs`{{task-form onCancel=onCancel}}`);
+      await click('[data-test-cancel-btn]');
+      expect(onCancelHandlerHasBeenCalled).to.be.true;
     });
   });
 });

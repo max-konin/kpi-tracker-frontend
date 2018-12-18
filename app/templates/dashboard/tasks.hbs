@@ -8,6 +8,7 @@
           <td>KPI score</td>
           <td>Activity Goal</td>
           <td>Completed</td>
+          <td></td>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,11 @@
               <td>{{task.kpiPoints}}</td>
               <td><ActivityGoal @task={{task}}/></td>
               <td>{{moment-calendar task.taskFinishedAt}}</td>
+              <td>
+                {{#link-to "dashboard.tasks.task.edit" task tagName="button" class="btn"}}
+                  {{fa-icon "edit"}}
+                {{/link-to}}
+              </td>
             </tr>
           {{/unless}}
         {{/each}}
