@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { describe, it, beforeEach } from 'mocha';
 import { setupApplicationTest } from 'ember-mocha';
-import { visit, find, fillIn, click, currentURL } from '@ember/test-helpers';
+import { visit, find, findAll, fillIn, click, currentURL } from '@ember/test-helpers';
 import { authenticateSession } from 'ember-simple-auth/test-support';
 import setupMirage from 'ember-cli-mirage/test-support/setup-mirage';
 import { selectChoose } from 'ember-power-select/test-support/helpers';
@@ -39,6 +39,9 @@ describe('Acceptence | Tasks | New Page', function() {
       });
       it('creates a new task on the server', function () {
         expect(server.db.tasks.length).to.eq(1);
+      });
+      it('adds table rows', function () {
+        expect(findAll('[data-test-task-row]').length).to.eq(1);
       });
       it('redirects to the index page', function () {
         expect(currentURL()).to.eq('/tasks');
