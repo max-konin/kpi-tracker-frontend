@@ -12,13 +12,15 @@
       </thead>
       <tbody>
         {{#each model as |task|}}
-          <tr data-test-task-row>
-            <td>{{task.category.name}}</td>
-            <td>{{task.user.email}}</td>
-            <td>{{task.kpiPoints}}</td>
-            <td><ActivityGoal @task={{task}}/></td>
-            <td>{{moment-calendar task.taskFinishedAt}}</td>
-          </tr>
+          {{#unless task.isNew}}
+            <tr data-test-task-row>
+              <td>{{task.category.name}}</td>
+              <td>{{task.user.email}}</td>
+              <td>{{task.kpiPoints}}</td>
+              <td><ActivityGoal @task={{task}}/></td>
+              <td>{{moment-calendar task.taskFinishedAt}}</td>
+            </tr>
+          {{/unless}}
         {{/each}}
       </tbody>
     </table>

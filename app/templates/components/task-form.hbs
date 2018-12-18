@@ -1,4 +1,4 @@
-{{#bs-form model=task onSubmit=(perform save) novalidate=true  as |form|}}
+{{#bs-form model=task onSubmit=(perform saveTask) novalidate=true  as |form|}}
   <div class="form-row">
     {{form.element
       controlType="power-select"
@@ -12,7 +12,7 @@
       class="col-sm"
     }}
     {{#form.element label="Datetime completed" property="taskFinishedAt" class="col-sm" as |el|}}
-      <div>
+      <div data-test-finised-at>
         <PikadayInput @onSelection={{action (mut el.value)}} id={{el.id}}/>
       </div>
     {{/form.element}}
@@ -23,6 +23,7 @@
       property="kpiPoints"
       label="How many emails were sent?"
       class="col-sm"
+      data-test-kpi-points=true
     }}
   </div>
     <div class="form-row">
@@ -31,6 +32,8 @@
       property="notes"
       label="Explain what did you do?"
       class="col-sm"
+      data-test-notes=true
     }}
   </div>
+  <SmartButton @disabled={{v-get task 'isInvalid'}} @loading={{saveTask.isRunning}}>Submit</SmartButton>
 {{/bs-form}}
